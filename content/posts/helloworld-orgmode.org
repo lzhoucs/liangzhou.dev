@@ -1,0 +1,33 @@
+---
+title: "Helloworld org"
+date: 2018-05-27T00:00:31-05:00
+draft: true
+---
+first org-mode post.
+
+* heading 1
+  Content with =code= and ~stuff~.
+** Header 2
+   a list:
+   - sdafasdf
+   - sadfsadf
+
+* Code demo
+#+BEGIN_SRC javascript
+// module1.js
+exports let name = 'original name';
+exports let obj = { name: name};
+
+// index.js - causing error: name is read-only...
+import {name} from 'module1.js';
+console.log(`old name : ${name}`);
+name = 'new name';
+console.log(`new name : ${name}`);
+
+// updated index.js - works. outputs new name.
+import {obj} from 'module1.js';
+console.log(`old name : ${obj.name}`);
+obj.name = 'new name';
+console.log(`new name : ${obj.name}`);
+
+#+END_SRC

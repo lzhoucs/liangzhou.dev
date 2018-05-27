@@ -1,4 +1,4 @@
-baseURL = "https://lzhoucs.me/"
+baseURL = "https://lzhoucs-me.netlify.com/"
 languageCode = "en-us"
 title = "TODO Learn More"
 theme = "sam"

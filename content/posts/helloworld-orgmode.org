@@ -1,8 +1,7 @@
----
-title: "Helloworld org"
-date: 2018-05-27T00:00:31-05:00
-draft: false
----
+#+title: Helloworld org
+#+date: 2018-05-27T00:00:31-05:00
+#+draft: false
+
 first org-mode post.
 
 * heading 1

@@ -1,0 +1,36 @@
+#+title: Go Notes
+#+date: 2018-05-28T13:17:21-05:00
+#+draft: true
+#+tags: go-lang
+#+showDate: true
+
+* What is good about go?
+  Below are a list of things I found unique in go compared to other traditional C family languages,
+  such as Java and JavaScript
+  
+- A function can return any number of results.
+  
+#+BEGIN_SRC go
+func swap(x, y string) (string, string) {
+	return y, x
+}
+func main() {
+	a, b := swap("hello", "world")
+	fmt.Println(a, b)
+}
+
+#+END_SRC
+
+- Deferred function calls are pushed onto a stack
+#+BEGIN_SRC go
+func main() {
+	fmt.Println("counting")
+
+	for i := 0; i < 10; i++ {
+		defer fmt.Println(i)
+	}
+
+	fmt.Println("done")
+}
+// outout: done9876543210
+#+END_SRC

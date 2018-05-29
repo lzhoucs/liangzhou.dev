@@ -1,8 +1,9 @@
-#+title:      New Comer
-#+date:       2016-01-04
-#+description:    This is my first blog post. cheers!
+#+title: New Comer
+#+date: 2016-01-04
+#+description: This is my first blog post. cheers!
+#+showDate: true
 #+categories: Personal
-#+tags:      First-Time
+#+tags: First-Time
 
 I wanted to run a blog for quite a long time now. IMO, a blog a good way to: 
 

@@ -1,0 +1,12 @@
+#+title:      New Comer
+#+date:       2016-01-04
+#+description:    This is my first blog post. cheers!
+#+categories: Personal
+#+tags:      First-Time
+
+I wanted to run a blog for quite a long time now. IMO, a blog a good way to: 
+
+- Keep track of knowledge.
+- Communicate with people around the world.
+
+I will blog mainly on the technology I am interested, the projects I am working on, the knowledge and lessons I learned etc. Hopefully it will be fun. :)

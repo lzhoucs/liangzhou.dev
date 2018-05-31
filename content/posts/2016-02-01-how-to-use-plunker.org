@@ -1,11 +1,10 @@
----
-layout:     post
-title:      How to use plunker
-date:       2016-02-01
-summary:    How to use plunker as a tool to quickly try out ideas.
-categories: tech devtool
-tags:      plunker
----
+#+layout: post
+#+title: How to use plunker
+#+date: 2016-02-01
+#+summary: How to use plunker as a tool to quickly try out ideas.
+#+categories: Development
+#+tags: Plunker
+
 Plunker has been a great tool for developers to try out new ideas effectively, share code among communities.
 Compared to other popular tool such as JSFiddle and Codepen, I personally find Plunker excel in the following areas:
 

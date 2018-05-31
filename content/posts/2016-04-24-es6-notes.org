@@ -1,0 +1,599 @@
+#+title: ES6 Notes
+#+date: 2016-04-24
+#+summary: ES6 study notes.
+#+showDate: true
+#+categories: Development
+#+tags: ES6 ES2015 JavaScript
+
+ES6(a.k.a ES2015) has been around for some time. Although it is fully backward compatible with previous version
+of JavaScript - ES5 which has been around for decades, there's quite some new syntax and features introduced in ES6
+that is exciting on one hand, but can easily get wrong on the other hand. This posts is my study notes on ES6.
+
+* let for block scoping
+
+~let~ defines block scope variables, which can be accessed in a nested scope just like ~var~. The following code outputs ~12~ :
+
+#+BEGIN_SRC js
+'use strict';
+function updateProductId() {
+  productId =12;
+}
+let productId =null;
+
+updateProductId();
+console.log(productId);
+#+END_SRC
+
+** Unlike ~var~, ~let~ is block scoped.
+
+In the following example, every time the for loop runs, a new ~i~ is declared. Thurs each function gets its own copy of ~i~.
+The code outputs ~0~ :
+
+#+BEGIN_SRC js
+'use strict';
+let updateFunctions =[];
+for (let i =0; i <2; i++){
+  updateFunctions.push(function() {return i; });
+}
+console.log(updateFunctions[0]());
+
+#+END_SRC
+
+Whereas in the following example, ~var i~ is function scoped and hoisted. Each function gets the same ~i~. So the code outputs ~2~
+
+#+BEGIN_SRC js
+'use strict';
+let updateFunctions =[];
+for (var i =0; i <2; i++){
+  updateFunctions.push(function() {return i; });
+}
+console.log(updateFunctions[0]());
+
+#+END_SRC
+
+* An arrow function is not a ~function~
+
+It is not like a ~function~ in a few ways. The key difference to note is that ~this~ in an arrow function is
+captured at function creation, not function invocation(runtime), and ~this~ can't be changed at runtime.
+
+** Unlike traditional ~function~, an arrow function is not 'bindable'.
+
+The following code outputs ~123~ rather than ~456~ :
+
+#+BEGIN_SRC js
+var o1 = {
+  number: 123,
+  getArrowFunc: function() {
+    return () => console.log(this.number);
+  }
+};
+
+var o2 = {
+  number: 456
+};
+o1.getArrowFunc().bind(o2)();
+
+#+END_SRC
+
+** Unlike ~function~, an arrow function is not 'callable'.
+
+Same as above, the following code outputs ~123~ rather than ~456~ :
+
+#+BEGIN_SRC js
+var o1 = {
+  number: 123,
+  getArrowFunc: function() {
+    return () => console.log(this.number);
+  }
+};
+
+var o2 = {
+  number: 456
+};
+o1.getArrowFunc().call(o2);
+
+#+END_SRC
+
+** Unlike ~function~, an arrow function doesn't has a ~prototype~.
+
+The code below outputs ~false~ :
+#+BEGIN_SRC js
+'use strict';
+var getPrice =() =>5.99;
+console.log(getPrice.hasOwnProperty("prototype"));
+
+#+END_SRC
+
+* Default Parameters
+
+** Default parameters have access to any variables in the scope.
+
+In the following example, ~price~ and ~baseTax~ can be accessed when defining another default parameter ~price~ :
+
+#+BEGIN_SRC js
+'use strict';
+var baseTax=0.07;
+var getTotal=function(price, tax=price *baseTax) {
+  console.log(price +tax);
+};
+
+#+END_SRC
+
+** Default parameter doesn't count as the actual parameter passed in.
+
+The following code outputs ~1~ instead of ~2~ :
+
+#+BEGIN_SRC js
+'use strict';
+var getTotal = function(price, tax=0.07){
+  console.log(arguments.length);
+};
+getTotal(5.00);
+#+END_SRC
+
+** Default parameters have orders and are not hoisted.
+
+The following example causes a ~SyntaxError~ because ~adjustment~ is used before it is defined:
+
+#+BEGIN_SRC js
+'use strict';
+var getTotal = function(price = adjustment, adjustment = 1.00){
+  console.log(price + adjustment);
+};
+getTotal();
+#+END_SRC
+
+However the following similar example is valid and outputs ~6~. This is because JavaScript
+is a dynamic language that doesn't do compile time check, and at run time, the lookup for ~adjustment~
+is skipped when the actual parameter ~5~ is passed in and assigned to ~price~.
+
+#+BEGIN_SRC js
+'use strict';
+var getTotal = function(price = adjustment, adjustment = 1.00){
+  console.log(price + adjustment);
+};
+getTotal(5);
+#+END_SRC
+
+* The ~Rest~ Parameter
+
+The concept is similar to Java's [Arbitrary Number of Arguments](http://docs.oracle.com/javase/tutorial/java/javaOO/arguments.html#varargs).
+
+** The 'Rest' parameter is always an array.
+
+The following code outputs ~[]~ :
+
+#+BEGIN_SRC js
+'use strict';
+var showCategories = function(productId, ...categories) {
+  console.log(categories);
+};
+showCategories(123);
+#+END_SRC
+
+** Unlike default parameters, the 'Rest' parameter doesn't count as a parameter defined on the function signature.
+
+The following code outputs ~1~ :
+
+#+BEGIN_SRC js
+'use strict';
+var showCategories = function(productId, ...categories) {};
+console.log(showCategories.length)
+#+END_SRC
+
+** Just like default parameters, the 'Rest' parameter doesn't count as a actual parameter passed in.
+
+The following code outputs the number of actual parameters passed in, which is ~3~
+#+BEGIN_SRC js
+'use strict';
+var showCategories = function(productId, ...categories) {
+  console.log(arguments.length);
+};
+showCategories(123, 'c1', 'c2')
+#+END_SRC
+
+* The 'Spread' operator
+
+~...~ is introduced in ES6 as the ~Spread~ operator.
+
+** ~...~ works not only with array, but with strings too.
+
+The ~...~ breaks the string into a series individual characters, so the output is the maximum character ~4~ :
+
+#+BEGIN_SRC js
+'use strict';
+var maxCode = Math.max(..."43210");
+console.log(maxCode);
+#+END_SRC
+
+* Object Literal Extensions
+
+An object literal is a list of zero or more pairs of property names and associated values of an object, enclosed in curly braces ~{}~. In ES6, object
+literals are extended with new features.
+
+** Like arrow functions, ~this~ in a shorthand function refer to the context the function being called.
+
+For example, the following code outputs ~5.99~ rather than ~7.99~ :
+
+#+BEGIN_SRC js
+'use strict';
+var price = 5.99;
+var productView = {
+  price: 7.99,
+  calculateValue() {
+    return this.price;
+  }
+};
+console.log(productView.calculateValue());
+#+END_SRC
+
+So we need to keep in mind that the shorthand functions are not exactly the same thing as the traditional functions. The same goes for arrow functions.
+
+* Template Literals
+
+** Expressions are allowed in ~${}~
+
+#+BEGIN_SRC js
+
+'use strict';
+let person = 'personA';
+let personAName = 'Ryan';
+
+console.log(~Person name: ${person + 'Name'}~); // Output: Person name: personAName
+#+END_SRC
+
+* ES6 Modules
+
+** Original reference to what is imported become unavailable once alias is used.
+#+BEGIN_SRC js
+import {name as name1} from 'module1.js';
+
+console.log(~${name}, ${name1} are loaded.~); // name is no longer available. It may or may not cause error depending on the transpiler used and runtime environments.
+
+#+END_SRC
+
+** ~import~ statements get ~hoisted~ and executed first before any other code.
+
+Suppose the following program starts from ~index.js~ which loads ~module1.js~ :
+#+BEGIN_SRC js
+// index.js
+console.log(~start using name: ${name}~);
+
+import {name} from 'module1.js';
+
+console.log('end');
+
+// module1.js
+export let name = "ES6 Template";
+
+console.log('module1 is loaded.');
+
+// output:
+module1 is loaded.
+start using name: ES6 Template
+end
+#+END_SRC
+
+** Named imports are read-only.
+
+We can't reassign a new value to named imports, but we can change properties.
+
+#+BEGIN_SRC js
+// module1.js
+exports let name = 'original name';
+exports let obj = { name: name};
+
+// index.js - causing error: name is read-only...
+import {name} from 'module1.js';
+console.log(~old name : ${name}~);
+name = 'new name';
+console.log(~new name : ${name}~);
+
+// updated index.js - works. outputs new name.
+import {obj} from 'module1.js';
+console.log(~old name : ${obj.name}~);
+obj.name = 'new name';
+console.log(~new name : ${obj.name}~);
+
+#+END_SRC
+
+** ES6 modules export/import bindings/references rather than values.
+
+In the example below, both primitive types: ~age~ and ~name~ get updated. So they are not
+being imported as local variables:
+
+#+BEGIN_SRC js
+// module1.js
+export let age = 10;
+export let name = 'Good Name';
+
+export function makeChange() {
+    age += 1; // change int primitive type
+    name += ' Updated'; // change string primitive type
+}
+
+// index.js
+import {age, name, makeChange} from './module1.js'
+
+console.log(~originals: ${age}, ${name}~);
+
+makeChange();
+
+console.log(~updated: ${age}, ${name}~);
+
+// output:
+originals: 10, Good Name
+updated: 11, Good Name Updated
+#+END_SRC
+
+* Class
+
+** Unlike object literals, a class definition is 'sort of' like a function definition.
+
+Because of that, ',' causes ~SyntaxError~ when running the following code:
+#+BEGIN_SRC js
+class Task {
+  constructor() {
+    console.log('constructing Task');
+  },
+  showId() {
+    console.log('99');
+  }
+}
+let task = new Task();
+#+END_SRC
+
+But unlike a function, variables are not allowed to be declared inside a class. The following code also causes ~SyntaxError~ :
+#+BEGIN_SRC js
+class Task {
+    var a = 1;
+    constructor() {
+        console.log('constructing Task');
+    }
+    showId() {
+        console.log('99');
+    }
+}
+let task = new Task();
+
+#+END_SRC
+
+** Just like functions, class definitions can be used in expressions.
+
+Please notice though, once class definition is assigned to a variable, the original reference is not available outside of the class definition.
+
+#+BEGIN_SRC js
+let newClass1 = class Task1 {
+  constructor() {
+    console.log('constructing Task');
+  }
+};
+new newClass1(); // works fine
+new Task1(); // ReferenceError
+
+let newClass2 = function Task2(){
+  console.log('constructing Task2');
+};
+new newClass2(); // works fine
+new Task2(); // ReferenceError
+
+#+END_SRC
+
+** Unlike functions, class definitions are not 'callable':
+#+BEGIN_SRC js
+
+class Task {
+  constructor() {
+    console.log('constructing Task');
+  }
+};
+Task.call( {} ); // TypeError
+Task.call(); //TypeError
+Task.call(window); //TypeError
+
+#+END_SRC
+
+** Unlike functions, class definitions are NOT polluting the global variable. 
+#+BEGIN_SRC js
+
+function Project1() { };
+class Project2 {};
+
+console.log(window.Project1 === Project1); // true
+console.log(window.Project2 === Project2); // false
+
+#+END_SRC
+
+* extends and super
+
+The most basic form:
+#+BEGIN_SRC js
+
+class Project {
+  constructor(name) {
+    console.log('constructing Project: ' + name);
+  }
+}
+class SoftwareProject extends Project {
+  constructor(name) {
+    console.log('constructing SoftwareProject: ' + name);
+    super(name);
+  }
+}
+new SoftwareProject('Mazatlan');
+
+#+END_SRC
+
+** Default constructors for classes
+
+When constructor is missing from base class, a default 'non-parameterized' one is created:
+#+BEGIN_SRC js
+
+class Project {
+}
+class SoftwareProject extends Project {
+  constructor(name) {
+    console.log('constructing SoftwareProject: ' + name);
+    super(name);
+  }
+}
+new SoftwareProject('Mazatlan');
+
+#+END_SRC
+
+When constructor is missing from subclass, a default 'parameterized' one is created to make sure parameters can be passed onto super constructor.
+#+BEGIN_SRC js
+// default constructor for subclass
+constructor(...args) {
+  super(...args);
+}
+#+END_SRC
+
+#+BEGIN_SRC js
+
+class Project {
+  constructor(name) {
+    console.log('constructing Project: ' + name);
+  }
+}
+class SoftwareProject extends Project {
+}
+new SoftwareProject('Mazatlan');
+
+#+END_SRC
+
+While it is ok not to have an explicit call to super constructor ~super()~ in base class, it is not ok to omit ~super()~ call in a subclass.
+So long as there's a constructor in the subclass, a default constructor with super() call won't be created.
+
+#+BEGIN_SRC js
+
+class Project {
+  constructor() {
+    // no super(), ok.
+  }
+}
+class SoftwareProject extends Project {
+  constructor() {
+    // no super(), NOT ok. ReferenceError.
+  }
+}
+new SoftwareProject('Mazatlan');
+
+#+END_SRC
+
+** ~this~ ordering
+
+In a subclass, you must call ~super()~ before you can use this:
+
+#+BEGIN_SRC js
+
+class Project {
+  constructor() {
+  }
+}
+class SoftwareProject extends Project {
+  constructor(name) {
+    this.name = name; // causes error
+    super();
+    this.name = name; // works.
+  }
+}
+new SoftwareProject('Mazatlan');
+
+#+END_SRC
+
+** static function are to be called by class, not the instances.
+
+#+BEGIN_SRC js
+
+class Project {
+  static getName() {
+    return 'Project Name';
+  }
+}
+let p = new Project();
+//Project.getName(); // TypeError
+p.getName(); // works fine
+
+#+END_SRC
+
+** ~new.target~ is always pointing the initial class
+
+#+BEGIN_SRC js
+
+class Project {
+  constructor() {
+    console.log(new.target);
+  }
+}
+class SoftwareProject extends Project {
+  constructor(name) {
+   super();
+   this.name = name;
+  }
+}
+new SoftwareProject();
+
+/* output:
+function class SoftwareProject extends Project {
+  constructor(name) {
+   super();
+   this.name = name;
+  }
+}
+*/
+#+END_SRC
+
+~new.target~ can be used to access static functions defined in the original class:
+
+#+BEGIN_SRC js
+
+class Project {
+  constructor() {
+    console.log(new.target.getCompany());
+  }
+}
+class SoftwareProject extends Project {
+  static getCompany() {
+    return 'A good company';
+  }
+}
+new SoftwareProject();
+
+#+END_SRC
+
+* Symbols
+
+~Symbol()~ are creating new unique ones, even with same parameters.
+
+#+BEGIN_SRC js
+let s1 = Symbol('name1');
+let s2 = Symbol('name1');
+console.log(s1 === s2); //false
+#+END_SRC
+
+~Symbol.for()~ on the other hand, only creates a new one when no existing one can be found
+in the symbol registry.
+
+#+BEGIN_SRC js
+
+let s1 = Symbol.for('name1');
+let s2 = Symbol.for('name1');
+
+console.log(s1 === s2); //true
+
+#+END_SRC
+
+Object properties created by Symbol are special ones that needs to be accessed in a special way:
+#+BEGIN_SRC js
+let article = {
+  title: 'A title',
+  [Symbol.for('article')]: 'An article'
+};
+console.log( Object.getOwnPropertyNames(article) ); // ['title']
+console.log( Object.getOwnPropertySymbols(article) ); // [Symbol(article)]
+#+END_SRC
+
+* References
+
+- [Classes in ECMAScript 6](http://www.2ality.com/2015/02/es6-classes-final.html) 

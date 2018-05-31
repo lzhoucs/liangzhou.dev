@@ -1,11 +1,8 @@
----
-layout:     post
-title:      ES6 Notes
-date:       2016-04-24
-summary:    ES6 study notes.
-categories: tech javascript
-tags:       ES6 ES2015 JavaScript
----
+#+title:      ES6 Notes
+#+date:       2016-04-24
+#+summary:    ES6 study notes.
+#+categories: Development
+#+tags:       ES6 ES2015 JavaScript
 
 ES6(a.k.a ES2015) has been around for some time. Although it is fully backward compatible with previous version
 of JavaScript - ES5 which has been around for decades, there's quite some new syntax and features introduced in ES6

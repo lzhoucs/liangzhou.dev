@@ -596,4 +596,4 @@ console.log( Object.getOwnPropertySymbols(article) ); // [Symbol(article)]
 
 * References
 
-- [Classes in ECMAScript 6](http://www.2ality.com/2015/02/es6-classes-final.html) 
+- [[http://www.2ality.com/2015/02/es6-classes-final.html][Classes in ECMAScript 6]] 

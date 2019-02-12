@@ -1,0 +1,80 @@
+#+title: Fix Bootcamp Error After Updating Windows 10
+#+date: 2018-06-03T14:51:42-05:00
+#+showDate: true
+#+draft: false
+#+categories: Development
+#+tags: bootcamp
+
+* The error
+ [[file:images/bootcamp-error.png][BootCamp Error]] 
+ 
+The issue: https://support.apple.com/en-us/HT203913
+
+Disk Utility app no longer lists hidden(unmounted) partition, which in my case is "Windows Recovery"(disk0s4), let alone removing it. ~diskutil list~ is the alternative.
+#+BEGIN_SRC sh
+➜  ~ diskutil list
+/dev/disk0 (internal):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      GUID_partition_scheme                         1.0 TB     disk0
+   1:                        EFI EFI                     314.6 MB   disk0s1
+   2:                 Apple_APFS Container disk1         745.0 GB   disk0s2
+   3:       Microsoft Basic Data BOOTCAMP                254.3 GB   disk0s3
+   4:           Windows Recovery                         899.7 MB   disk0s4
+
+/dev/disk1 (synthesized):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      APFS Container Scheme -                      +745.0 GB   disk1
+                                 Physical Store disk0s2
+   1:                APFS Volume :                       202.1 GB   disk1s1
+   2:                APFS Volume Preboot                 23.6 MB    disk1s2
+   3:                APFS Volume Recovery                517.8 MB   disk1s3
+   4:                APFS Volume VM                      1.1 GB     disk1s4
+#+END_SRC
+
+* The fix
+
+Why "Free Space"?
+from ~man diskutil~
+#+BEGIN_QUOTE
+If you specify Free Space for format, the partition itself is deleted (removed entirely) from the partition map instead of merely being erased.
+#+END_QUOTE
+
+Deleting the partition in addition to merely erasing it is what I want.
+
+- Deleting the partition:
+#+BEGIN_SRC sh
+➜  ~ diskutil  erasevolume  "Free Space"  ""  /dev/disk0s4
+Started erase on disk0s4
+Unmounting disk
+Finished erase on disk0
+#+END_SRC
+
+- list again:
+#+BEGIN_SRC sh
+➜  ~ diskutil list
+/dev/disk0 (internal):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      GUID_partition_scheme                         1.0 TB     disk0
+   1:                        EFI EFI                     314.6 MB   disk0s1
+   2:                 Apple_APFS Container disk1         745.0 GB   disk0s2
+   3:       Microsoft Basic Data BOOTCAMP                254.3 GB   disk0s3
+
+/dev/disk1 (synthesized):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      APFS Container Scheme -                      +745.0 GB   disk1
+                                 Physical Store disk0s2
+   1:                APFS Volume :                       202.1 GB   disk1s1
+   2:                APFS Volume Preboot                 23.6 MB    disk1s2
+   3:                APFS Volume Recovery                517.8 MB   disk1s3
+   4:                APFS Volume VM                      1.1 GB     disk1s4
+#+END_SRC
+
+The partition is deleted but the "Free Space" is not listed.
+
+* References:
+How to remove a partition with ~diskutil~: https://apple.stackexchange.com/questions/235568/merge-partitions-with-macintosh-hd
+another way to fix that requires deleting bootcamp partition:
+- https://discussions.apple.com/thread/8013300?answerId=31990068022
+- https://discussions.apple.com/thread/7784222
+yet another way using gdisk:
+https://forums.macrumors.com/threads/the-startup-disk-cannot-be-partitioned-or-restored-to-a-single-partition-error-in-boot-camp-assist.2110495/

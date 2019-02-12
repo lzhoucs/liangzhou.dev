@@ -1,0 +1,9 @@
+#+title: "Netlify Hugo"
+#+date: 2019-02-12T06:25:14-06:00
+#+showDate: true
+#+draft: true
+#+categories: Development
+#+tags: JavaScript
+
+* how does netlify handle submodule where contains hugo themes?
+https://github.com/netlify/build-image/issues/118#issuecomment-364566072

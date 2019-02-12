@@ -1,0 +1,22 @@
+#+title: "Java Regex"
+#+date: 2018-06-01T11:04:58-05:00
+#+showDate: true
+#+draft: true
+#+categories: Development
+#+tags: JavaScript
+
+#+BEGIN_SRC java
+public static void main(String[] args)
+    {
+        final String input = "1231231231";
+
+        Pattern pattern = Pattern.compile("\\d{9}");
+        Matcher m1 = pattern.matcher(input);
+        Matcher m2 = pattern.matcher(input);
+        final boolean entireMatch =  m1.matches();
+        final boolean partialMatch = m2.find();
+        System.out.println("entireMatch: " + entireMatch);
+        System.out.println("partialMatch: " + partialMatch);
+    }
+
+#+END_SRC

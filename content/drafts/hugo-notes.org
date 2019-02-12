@@ -1,0 +1,9 @@
+#+title: Hugo Notes
+#+date: 2018-05-28T23:34:51-05:00
+#+draft: true
+#+showDate: true
+
+* org front matter doesn't only apply for .org files
+  It seems front matter are parsed separately regardless what type of markup the
+file is on(determined by either file extension or ~markup~ front matter). For example, org front
+matter ~#+key: value~ can also be used in non org markup such as markdown.

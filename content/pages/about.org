@@ -1,0 +1,16 @@
+#+title: About Me
+#+categories: Personal
+#+tags: Me
+
+I am a full-stack software engineer who:
+
+  - love JavaScript
+  - use Emacs
+  - love open source
+  - believe in BDD/TDD
+
+You can find me at:
+
+  - [[https://www.linkedin.com/in/lzhoucs][LinkedIn Profile]] 
+  - [[https://github.com/lzhoucs][GitHub Projects]]
+  - [[http://stackoverflow.com/users/1999083/liang-zhou][Stack OverFlow Account]]

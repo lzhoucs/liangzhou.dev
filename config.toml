@@ -1,5 +1,77 @@
 baseURL = "https://www.lzhoucs.me/"
-languageCode = "en-us"
+DefaultContentLanguage = "en"
 title = "TODO Learn More"
-theme = "sam"
+theme = "beautifulhugo"
 googleAnalytics = "UA-120138976-1"
+
+[Params]
+  homeTitle = "Liang's salts" # Set a different text for the header on the home page
+  subtitle = "A fullstack developer who loves Emacs and elegant code"
+  logo = "/images/liang-zhou.jpg" # Expecting square dimensions
+  favicon = "/images/favicon.png"
+  # dateFormat = "January 2, 2006"  doesn't seem to make a difference
+  commit = "https://github.com/lzhoucs/lzhoucs.me/tree/"
+  # rss = true
+  # comments = true
+  # readingTime = true
+  # wordCount = true
+  # useHLJS = true
+  # socialShare = true
+  # delayDisqus = true
+  # showRelatedPosts = true
+
+#  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+
+#[[Params.bigimg]]
+#  src = "img/triangle.jpg"
+#  desc = "Triangle"
+#[[Params.bigimg]]
+#  src = "img/sphere.jpg"
+#  desc = "Sphere"
+#  # position: see values of CSS background-position.
+#  position = "center top"
+#[[Params.bigimg]]
+#  src = "img/hexagon.jpg"
+#  desc = "Hexagon"
+
+[Author]
+  name = "Liang Zhou"
+  # website = "yourwebsite.com"
+  email = "lzhoucs@gmail.com"
+  # facebook = "username"
+  # googleplus = "+username" # or xxxxxxxxxxxxxxxxxxxxx
+  github = "lzhoucs"
+  # gitlab = "username"
+  # bitbucket = "username"
+  # twitter = "username"
+  # reddit = "username"
+  linkedin = "lzhoucs"
+  # xing = "username"
+  stackoverflow = "users/1999083/liang-zhou"
+  # snapchat = "username"
+  # instagram = "username"
+  # youtube = "user/username" # or channel/channelname
+  # soundcloud = "username"
+  # spotify = "username"
+  # bandcamp = "username"
+  # itchio = "username"
+  # vk = "username"
+  # paypal = "username"
+  # telegram = "username"
+  # 500px = "username"
+
+
+[[menu.main]]
+    name = "Blog"
+    url = "/posts"
+    weight = 1
+
+[[menu.main]]
+    name = "About"
+    url = "pages/about/"
+    weight = 3
+
+[[menu.main]]
+    name = "Tags"
+    url = "tags"
+    weight = 2

@@ -1,7 +1,6 @@
 #+title: Manage multiple java versions on macOS using brew and jenv
 #+date: 2018-05-20
 #+showDate: true
-#+draft: true
 #+categories: Development
 #+tags: Java macOS
 

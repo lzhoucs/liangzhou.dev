@@ -1,7 +1,6 @@
 #+title: Setting up GitHub Pages site locally on Windows
-#+date:       2016-04-26
+#+date: 2016-04-26
 #+showDate: true
-#+draft: true
 #+categories: Development
 #+tags: GitHub-Pages Jekyll Windows
 
@@ -22,7 +21,7 @@ setting up ~GitHub Pages~.
 The recommend way of installation is to simply use a [ruby installer](http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.2.4-x64.exe).
 After launching the installer, next all the way to the end and it is recommended not to check any options as shown below:
 
-![Ruby Installation](/images/posts/ruby-install-1.png)
+[[file:images/ruby-install-1.png][Ruby Installation]]
 
 After ruby is installed, manually add ~C:\Ruby22-x64\bin~ to your ~Path~.
 

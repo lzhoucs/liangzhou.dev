@@ -1,7 +1,6 @@
 #+title: Fix Bootcamp Error After Updating Windows 10
 #+date: 2018-06-03T14:51:42-05:00
 #+showDate: true
-#+draft: false
 #+categories: Development
 #+tags: bootcamp
 

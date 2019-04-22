@@ -3,6 +3,7 @@ DefaultContentLanguage = "en"
 title = "TODO Learn More"
 theme = "beautifulhugo"
 googleAnalytics = "UA-120138976-1"
+enableGitInfo=true
 
 [Params]
   homeTitle = "Liang's salts" # Set a different text for the header on the home page

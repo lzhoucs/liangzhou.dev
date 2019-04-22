@@ -11,14 +11,14 @@ googleAnalytics = "UA-120138976-1"
   favicon = "/images/favicon.png"
   # dateFormat = "January 2, 2006"  doesn't seem to make a difference
   commit = "https://github.com/lzhoucs/lzhoucs.me/tree/"
-  # rss = true
+  rss = true
   # comments = true
-  # readingTime = true
-  # wordCount = true
+  readingTime = true
+  wordCount = true
   useHLJS = true
   # socialShare = true
   # delayDisqus = true
-  # showRelatedPosts = true
+  showRelatedPosts = true
 
 #  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
 
@@ -68,10 +68,10 @@ googleAnalytics = "UA-120138976-1"
 
 [[menu.main]]
     name = "About"
-    url = "pages/about/"
+    url = "/pages/about"
     weight = 3
 
 [[menu.main]]
     name = "Tags"
-    url = "tags"
+    url = "/tags"
     weight = 2

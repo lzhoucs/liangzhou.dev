@@ -1,6 +1,5 @@
 #+title: ES6 Notes
 #+date: 2016-04-24
-#+summary: ES6 study notes.
 #+showDate: true
 #+categories: Development
 #+tags: ES6 ES2015 JavaScript

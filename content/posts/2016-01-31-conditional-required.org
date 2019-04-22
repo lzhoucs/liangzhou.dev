@@ -1,6 +1,5 @@
 #+title: Angular directives for conditional required
 #+date: 2016-01-31
-#+summary: We are building a series of custom directives that do more than just `ng-required`
 #+showDate: true
 #+categories: Development
 #+tags: Angular

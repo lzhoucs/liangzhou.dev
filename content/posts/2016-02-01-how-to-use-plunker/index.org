@@ -1,6 +1,5 @@
 #+title: How to use plunker
 #+date: 2016-02-01
-#+summary: How to use plunker as a tool to quickly try out ideas.
 #+showDate: true
 #+categories: Development
 #+tags: Plunker

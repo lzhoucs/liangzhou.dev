@@ -16,6 +16,7 @@ enableGitInfo=true
   # comments = true
   readingTime = true
   wordCount = true
+  # showAuthor = true
   useHLJS = true
   # socialShare = true
   # delayDisqus = true

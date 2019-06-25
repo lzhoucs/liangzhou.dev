@@ -1,4 +1,4 @@
-baseURL = "https://www.lzhoucs.me/"
+baseURL = "https://www.liangzhou.dev/"
 DefaultContentLanguage = "en"
 title = "TODO Learn More"
 theme = "beautifulhugo"
@@ -11,7 +11,7 @@ enableGitInfo=true
   logo = "/images/liang-zhou.jpg" # Expecting square dimensions
   favicon = "/images/favicon.png"
   # dateFormat = "January 2, 2006"  doesn't seem to make a difference
-  commit = "https://github.com/lzhoucs/lzhoucs.me/tree/"
+  commit = "https://github.com/lzhoucs/liangzhou.dev/tree/"
   rss = true
   # comments = true
   readingTime = true

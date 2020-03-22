@@ -1,0 +1,16 @@
+* https://github.com/gohugoio/hugo/issues/1483
+  PR: https://github.com/gohugoio/hugo/pull/3001
+  Parser: https://github.com/chaseadamsio/goorgeous
+
+* How good is hugo's org support?
+  - "partially orgmode parsing, but not native completely support like emacs": https://github.com/netlify/build-image/pull/73#issue-131927176
+  - "Hugo natively supports parsing Org (but that support is only partial).": https://orgmode.org/worg/org-blog-wiki.html
+  - "Org mode parsing from within Hugo is really basic": https://www.reddit.com/r/emacs/comments/9h4nl5/orgmode_blog_in_orgmode/e6b6k2x/
+  - "Hugo has org-support built-in, but it only supports a subset of org-mode’s features.": https://www.baty.net/2018/lets-try-using-ox-hugo-again/
+
+* org blog
+** org -> markdown
+   - ox-hugo: to Hugo-compatible Markdown (Blackfriday)
+** org -> html
+   - hugo: its dependency(chaseadamsio/goorgeous) does org -> html conversion
+   - emacs: can be done in netlify

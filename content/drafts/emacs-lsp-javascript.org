@@ -1,0 +1,16 @@
+* Emacs side
+** emacs lsp mode: https://github.com/emacs-lsp/lsp-mode/
+
+** lsp-vue: https://github.com/emacs-lsp-legacy/lsp-vue
+   According to: https://github.com/emacs-lsp-legacy/lsp-vue/issues/20#issuecomment-455599908, this package shouldn't be necessary
+* LSP Spec: https://microsoft.github.io/language-server-protocol/implementors/servers/
+
+* LSP Servers
+** TypeScript & JavaScript Language Server(listed in emacs lsp mode as recommended): https://github.com/theia-ide/typescript-language-server
+** JavaScript and TypeScript Language Server: https://github.com/sourcegraph/javascript-typescript-langserver
+   issues: https://github.com/Microsoft/TypeScript/issues/11274#issuecomment-418749315
+** Vue Language Server: https://github.com/vuejs/vetur/tree/master/server
+
+* tsserver is NOT lsp compatible: https://stackoverflow.com/a/39785976/1999083
+  Closed discussion: https://github.com/Microsoft/TypeScript/issues/11274
+

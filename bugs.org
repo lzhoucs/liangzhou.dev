@@ -1,0 +1,7 @@
+* Org-mode front matter boolean variable doesn't work
+  ~#+showDate: false~ is treated the same as ~#+showDate: true~. In fact, ~#+showDate: abc~ has the same effect.
+
+* Org-mode in page link doesn't work
+  See 2016-02-01-how-to-use-plunker post for details.
+* ~code~ is fine, but ~code~: is not
+* #+BEGIN_SRC js follow by empty line results in a huge top margin in browser.

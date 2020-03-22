@@ -1,0 +1,12 @@
+#+title: "Remacs"
+#+date: 2019-02-16T22:35:36-06:00
+#+showDate: true
+#+draft: true
+#+categories: Development
+#+tags: TODO
+
+* Build
+  useful but unoffical commands to build: https://github.com/remacs/remacs/issues/886#issuecomment-445151605
+
+* Link the app(needs to be update)
+  ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications

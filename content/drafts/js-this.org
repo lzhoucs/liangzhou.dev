@@ -1,0 +1,29 @@
+#+title: Js This
+#+date: 2019-05-16T12:21:20-05:00
+#+showDate: true
+#+draft: true
+#+categories: Development
+#+tags: JavaScript
+
+#+BEGIN_SRC js
+const obj1 = {
+  fn1() {
+    console.log('in obj',this)
+    fn2() 
+    fn3()
+  }
+}
+function fn2() {
+  console.log('out obj',this)
+}
+const fn3 = () => {
+console.log('out obj, fat',this)
+}
+#+END_SRC
+
+output:
+#+BEGIN_SRC 
+in obj {fn1: ƒ}
+12:19:35.093 VM728:9 out obj Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+12:19:35.094 VM728:12 out obj, fat Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+#+END_SRC

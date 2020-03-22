@@ -1,0 +1,13 @@
+#+title: Material Design Note
+#+date: 2020-03-22T00:15:33-05:00
+#+showDate: true
+#+draft: true
+#+categories: Development
+#+tags: material-design UI/UX
+
+* References
+- [[https://material.io/collections/get-started/#web][Material Design - Get Started]]
+  - [[https://material.io/develop/web/][Material Design - Web home]]
+  - [[https://material.io/collections/developer-tutorials/#web][Developer tutorials]]
+  - [[https://material-components.github.io/material-components-web-catalog/#/][UI Demo]]
+  - [[https://github.com/material-components/material-components-web][Github Repo]]

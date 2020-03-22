@@ -1,3 +1,14 @@
 * My personal blog
 
-Built with [[https://gohugo.io/][hugo]] and [[https://themes.gohugo.io/beautifulhugo/][Beautiful Hugo]] theme. Visit at: https://liangzhou.dev
+Built with [[https://gohugo.io/][hugo]] and [[https://themes.gohugo.io/beautifulhugo/][Beautiful Hugo]] theme. Visit at: https://liangzhou.dev. CICD
+is on [[https://www.netlify.com/][Netlify]]
+
+** Workflow
+- Run ~my_hugo.sh draft file-name~ to create a new .org file in content/drafts/
+- Run ~my_hugo.sh start~ to launch hugo server locally with draft content
+- Author in org mode
+- Remove ~#+draft: true~ and move the file from content/drafts/ to content/posts/
+- Push to ~master~ branch which will trigger a new netlify build and deployment
+* TODO
+- update to hugo 0.68 in netlify config
+- explore https://github.com/masasam/emacs-easy-hugo

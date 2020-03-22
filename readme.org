@@ -1,0 +1,3 @@
+* My personal blog
+
+Built with [[https://gohugo.io/][hugo]] and [[https://themes.gohugo.io/beautifulhugo/][Beautiful Hugo]] theme. Visit at: https://liangzhou.dev

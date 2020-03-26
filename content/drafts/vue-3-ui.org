@@ -1,0 +1,28 @@
+#+title: Vue 3 UI
+#+date: 2020-03-22T23:17:55-05:00
+#+showDate: true
+#+draft: true
+#+categories: Development
+#+tags: vue.js
+
+* vuetify
+- [[https://github.com/vuetifyjs/vuetify/tree/next][vuetify ~next~ branch]]
+- [[https://www.notion.so/d107077314ca4d2896f0eeba49fe8a14?v=5cc7c08e9cc44021a7c86a20f189b0ba][Tasks Board]]
+- [[https://github.com/vuetifyjs/vuetify/compare/dev...next][compare/dev...next]]
+
+* material-components-web
+- [[https://github.com/material-components/material-components-web][material-components-web Repo]]
+- [[https://github.com/matsp/material-components-vue][material-components-vue Repo]], using [[https://github.com/material-components/material-components-web/blob/master/docs/integrating-into-frameworks.md#the-simple-approach-wrapping-mdc-web-vanilla-components][Simple Approach]]
+- [[https://github.com/pgbross/vue-material-adapter][vue-material-adapter Repo]], using [[https://github.com/material-components/material-components-web/blob/master/docs/integrating-into-frameworks.md#the-advanced-approach-using-foundations-and-adapters][Advanced Approach]]
+
+
+* Vue 3
+- [[https://github.com/vuejs/vue/projects/6][Roadmap Board]]
+- [[https://github.com/vuejs/rfcs/pulls?q=is%3Apr+is%3Amerged+label%3A3.x][upcoming changes in 3.0]]
+- [[https://github.com/vuejs/vue-next][vue-next Repo]]
+- [[https://github.com/vuejs/vue-next-webpack-preview][vue-next-webpack-preview Repo]]
+ 
+* Some thoughts and plan come to mind
+ - Two projects/repos: one for components, one for widgets(larger UI components built with the former as building blocks)
+ - Vue 3
+ - Start as private project, make it public when going to alpha
